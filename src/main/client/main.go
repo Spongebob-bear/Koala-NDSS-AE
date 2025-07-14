@@ -2,7 +2,7 @@
    CLI for clients to submit transactions.
 */
 
-package client
+package main
 
 import (
 	"flag"

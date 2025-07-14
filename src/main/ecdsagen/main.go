@@ -2,7 +2,7 @@
 generating threshold prf keys
 */
 
-package ecdsagen
+package main
 
 import (
 	"flag"

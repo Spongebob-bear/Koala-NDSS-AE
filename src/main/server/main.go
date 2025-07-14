@@ -2,7 +2,7 @@
 Main function for servers. Start A replica.
 */
 
-package server
+package main
 
 import (
 	"flag"
