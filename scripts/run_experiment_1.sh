@@ -58,7 +58,7 @@ echo "[Start Client] start the client."
 
 # wait for the end of the evaluation
 echo
-sleep 20
+sleep 30
 
 # kill all server and client
 echo
