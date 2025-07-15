@@ -9,10 +9,12 @@ if [ "$#" -ne 1 ]; then
 fi
 
 STORAGE_OPTION=$1
+SLEEP_TIME=30
 
 if [ "$1" -eq 1 ]; then
   echo "Evaluating performance when storing all consensus parameters"
   EXPERIMENT_DIR="./experiments/HS_storage/all"
+  SLEEP_TIME=50
 fi
 
 if [ "$1" -eq 2 ]; then
@@ -21,7 +23,7 @@ if [ "$1" -eq 2 ]; then
 fi
 
 if [ "$1" -eq 3 ]; then
-  echo "Evaluating performance when storing none consensus parameters"
+  echo "Evaluating performance when storing none of the consensus parameters"
   EXPERIMENT_DIR="./experiments/HS_storage/none"
 fi
 
@@ -58,14 +60,16 @@ echo "[Start Client] start the client."
 
 # wait for the end of the evaluation
 echo
-sleep 30
+echo "Evaluation in progress... waiting ${SLEEP_TIME} seconds."
+sleep $SLEEP_TIME
 
-# kill all server and client
+
+# kill all servers and clients
 echo
 echo "[Kill Processes] kill all server and client"
 killall server
 killall client
-echo "The latencies of 55 blocks are expected to be output. If not, increase the waiting time in the script $0"
+echo "The latencies of 55 blocks are expected to be output. If not, increase the SLEEP_TIME in the script $0"
 sleep 1
 
 echo

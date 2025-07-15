@@ -9,10 +9,8 @@ set -e
 # --- Environment Setup ---
 
 echo "INFO: Setting Go environment variables..."
-# Use sudo for a system-wide setting, assuming 'go' is in the PATH.
-# If PATH is not set yet, use the full path.
 # This command only needs to be run once, but it's safe to run multiple times.
-sudo /usr/local/go/bin/go env -w GO111MODULE=on
+/usr/local/go/bin/go env -w GO111MODULE=on
 
 echo "INFO: Downloading Go module dependencies..."
 # This will be silent if dependencies are already downloaded.
