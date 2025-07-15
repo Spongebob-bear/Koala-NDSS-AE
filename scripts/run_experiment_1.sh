@@ -1,20 +1,20 @@
 #!/bin/bash
 
-if [ "$#" -ne 1 ]; then
-    echo -e "$0 <the specific storage option>\n"
-    echo -e "  1: storing all parameters\n"
-    echo -e "  2: storing minimum parameters\n"
-    echo -e "  3: storing no parameters\n"
+if [ "$#" -ne 2 ]; then
+    echo -e "$0 <the specific storage option> <the waiting time (seconds) for the evaluation>\n"
+    echo -e "    storage options:\n"
+    echo -e "        1: storing all parameters\n"
+    echo -e "        2: storing minimum parameters\n"
+    echo -e "        3: storing no parameters\n"
     exit 1
 fi
 
 STORAGE_OPTION=$1
-SLEEP_TIME=30
+SLEEP_TIME=$2
 
 if [ "$1" -eq 1 ]; then
   echo "Evaluating performance when storing all consensus parameters"
   EXPERIMENT_DIR="./experiments/HS_storage/all"
-  SLEEP_TIME=50
 fi
 
 if [ "$1" -eq 2 ]; then
@@ -29,7 +29,7 @@ fi
 
 mkdir -p "$EXPERIMENT_DIR"
 
-# remove the old log file
+# Remove the old log file
 rm -rf "../var/log"
 
 # modify the configuration file
@@ -52,7 +52,7 @@ done
 sleep 1
 
 
-# start the client.
+# Start the client.
 echo
 echo "[Start Client] start the client."
 ./client 100 1 55000
