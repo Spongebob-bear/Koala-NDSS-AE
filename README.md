@@ -436,7 +436,7 @@ This script will:
     ...
     ```
 
-### Experiment 2.3: Attack on Koala-2
+#### Experiment 2.3: Attack on Koala-2
 
 This sub-experiment aims to reproduce the result shown in **Figure 7** of the paper, demonstrateing that our Koala-2 protocol can defend against the double-spending attack.
 
