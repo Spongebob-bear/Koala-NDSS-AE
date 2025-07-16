@@ -1,6 +1,10 @@
 # Koala-NDSS-AE
 *The artifact for AE of NDSS'26*
 
+This repository contains artifacts for the paper "Consensus in the Known Participation Model with Byzantine Failures and Sleepy Replicas". The code is primarily intended for academic research, which include:
+- HotStuff, a classic partially synchronous consensus protocol
+- Koala-2, the first partially synchronous consensus protocol that tolerates Byzantine failures and sleepy replicas without the stable storage assumption
+
 This document serves as the Artifact Evaluation guide for our paper. It contains detailed instructions to set up the environment, compile the source code, and, most importantly, reproduce the experimental results presented in the paper. All steps have been tested on an Ubuntu Server 22.04 LTS.
 
 
