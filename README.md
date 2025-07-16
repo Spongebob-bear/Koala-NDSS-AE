@@ -2,8 +2,8 @@
 *The artifact for AE of NDSS'26*
 
 This repository contains artifacts for the paper "Consensus in the Known Participation Model with Byzantine Failures and Sleepy Replicas". The code is primarily intended for academic research, which include:
-- HotStuff, a classic partially synchronous consensus protocol
-- Koala-2, the first partially synchronous consensus protocol that tolerates Byzantine failures and sleepy replicas without the stable storage assumption
+- HotStuff, a classic partially synchronous consensus protocol.
+- Koala-2, the first partially synchronous consensus protocol that tolerates Byzantine failures and sleepy replicas without the stable storage assumption.
 
 This document serves as the Artifact Evaluation guide for our paper. It contains detailed instructions to set up the environment, compile the source code, and, most importantly, reproduce the experimental results presented in the paper. All steps have been tested on an Ubuntu Server 22.04 LTS.
 
@@ -15,7 +15,7 @@ A machine with the following minimum specifications is required:
 - Operating System: Ubuntu Server 22.04 LTS (amd64)
 - CPU: 4 cores
 - Memory: 16 GB
-- Disk Space: 40 GB free
+- Disk: 40 GB of free space (SSD recommended)
 
 
 ## Prerequisites
@@ -29,7 +29,7 @@ Open your terminal and run the following commands:
 sudo apt update -y
 
 # Install essential build and utility tools
-sudo apt-get install -y python3-pip git wget zip unzip vim curl
+sudo apt install -y python3-pip git wget zip unzip vim curl
 ```
 
 ## Installation
@@ -86,7 +86,12 @@ Now that Go is installed, you can clone the repository and compile the source co
     cd Koala-NDSS-AE
     ```
 
-3.  **Run the build script.**
+3.  **Switch to the stable version.**
+    ```bash
+    git checkout ndss-ae
+    ```
+
+4.  **Run the build script.**
     This repository provides two build scripts. Choose one based on your needs.
 
     *   **Option A: Online Build**
