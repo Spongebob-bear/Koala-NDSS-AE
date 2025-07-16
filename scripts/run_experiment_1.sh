@@ -69,7 +69,7 @@ echo
 echo "[Kill Processes] kill all server and client"
 killall server
 killall client
-echo "The latencies of 55 blocks are expected to be output. If not, increase the SLEEP_TIME in the script $0"
+# echo "The latencies of 55 blocks are expected to be output. If not, increase the SLEEP_TIME in the script $0"
 sleep 1
 
 echo
