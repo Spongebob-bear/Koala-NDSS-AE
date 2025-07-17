@@ -38,7 +38,7 @@ The installation process is divided into two main steps: installing the Go progr
 
 ### Step 1: Install Go (GoLang)
 
-This project requires Go version `1.19.4`.
+This project requires Go version `1.19.4` or a higher version.
 
 1.  **Download the Go binary archive.**
     You can download it from the official Go website. If you are in a region with slow access (like mainland China), a mirror is provided.
