@@ -29,7 +29,7 @@ Open your terminal and run the following commands:
 sudo apt update -y
 
 # Install essential build and utility tools
-sudo apt install -y python3-pip git wget zip unzip vim curl
+sudo apt install -y python3-pip git wget zip unzip vim curl psmisc
 ```
 
 ## Installation
@@ -53,20 +53,44 @@ This project requires Go version `1.19.4` or a higher version.
         ```
 
 2.  **Extract the archive.**
-    This command will install Go into the `/usr/local` directory, which is the standard location.
+    This command will install Go into a directory of your choice.
+     ```bash
+    # Replace [your directory] with your chosen location.
+    tar -C [your directory] -xzf go1.19.4.linux-amd64.tar.gz
+
+    ```
+    Two examples:
 
     ```bash
+    # Example 1: System-wide installation (requires sudo)
     sudo tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz
+
+    
+    # Example 2: User-level installation in your home directory (~)
+    tar -C ~ -xzf go1.19.4.linux-amd64.tar.gz
     ```
 
-3.  **Add Go to your system's PATH.**
+4.  **Add Go to your PATH in ~/.bashrc.**
     This is a **critical step** so that your terminal can find the `go` command.
 
     ```bash
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
-    source ~/.profile
+    # Replace [your directory] with the directory where you installed Go. 
+    echo 'export PATH=[your directory]/go/bin:$PATH' >> ~/.bashrc
     ```
-    To verify the installation, open a **new terminal** or run `source ~/.profile` again, then type:
+    Two examples:
+    ```bash
+    # If you installed Go in /usr/local:
+    echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
+
+    # If you installed Go in the home directory (~):
+    echo 'export PATH=~/go/bin:$PATH' >> ~/.bashrc
+    ```
+    Load the updated .bashrc configuration:
+    ```bash
+    source ~/.bashrc
+    ```
+    
+    To verify the installation, type:
     ```bash
     go version
     # It should output: go version go1.19.4 linux/amd64
