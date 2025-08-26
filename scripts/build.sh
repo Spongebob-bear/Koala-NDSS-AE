@@ -10,11 +10,11 @@ set -e
 
 echo "INFO: Setting Go environment variables..."
 # This command only needs to be run once, but it's safe to run multiple times.
-/usr/local/go/bin/go env -w GO111MODULE=on
+go env -w GO111MODULE=on
 
 echo "INFO: Downloading Go module dependencies..."
 # This will be silent if dependencies are already downloaded.
-/usr/local/go/bin/go mod download
+go mod download
 
 
 # --- Build Executables ---
@@ -24,7 +24,7 @@ echo "INFO: Downloading Go module dependencies..."
 # The output (-o) files will be placed in the current (root) directory.
 
 echo "INFO: Building 'ecdsagen' executable..."
-/usr/local/go/bin/go build -o ./ecdsagen ./src/main/ecdsagen/
+go build -o ./ecdsagen ./src/main/ecdsagen/
 chmod +x ./ecdsagen
 echo "SUCCESS: 'ecdsagen' built and made executable."
 
@@ -34,12 +34,12 @@ echo "INFO: Running ecdsagen to generate keys..."
 ./ecdsagen 0 100
 
 echo "INFO: Building 'server' executable..."
-/usr/local/go/bin/go build -o ./server ./src/main/server/
+go build -o ./server ./src/main/server/
 chmod +x ./server
 echo "SUCCESS: 'server' built and made executable."
 
 echo "INFO: Building 'client' executable..."
-/usr/local/go/bin/go build -o ./client ./src/main/client/
+go build -o ./client ./src/main/client/
 chmod +x ./client
 echo "SUCCESS: 'client' built and made executable."
 
