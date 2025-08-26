@@ -112,7 +112,7 @@ Now that Go is installed, you can clone the repository and compile the source co
 
 3.  **Switch to the stable version.**
     ```bash
-    git checkout ndss-ae
+    git checkout ndss-ae-2
     ```
 
 4.  **Run the build script.**
