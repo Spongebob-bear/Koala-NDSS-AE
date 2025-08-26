@@ -149,16 +149,12 @@ The server instances are configured in the `etc/conf.json` file. Before starting
 
     ```json
     "replicas": [
-       {
-          "id": "0",          // The unique ID for this server instance
-          "host": "127.0.0.1", // The IP address the server will listen on
-          "port": "8000"       // The port number
-       },
-       {
-          "id": "1",
-          "host": "127.0.0.1",
-          "port": "8001"
-       }
+        {
+          "id": "0",            // The unique ID for this server instance
+          "host": "127.0.0.1",  // The IP address the server will listen on
+          "port": "11000"       // The port number
+        },
+        ...
     ]
     ```
 
@@ -209,7 +205,129 @@ The client can be used to send requests to the running servers.
         ```bash
         ./client 200 1 500
         ```
+### A working example: Running four servers and one client
+You can either use the provided `etc/conf.json` directly (it is pre-configured for four servers), or modify it with your own settings, ensuring the `replicas` array still defines four replicas.
+For example:
+```json
+    "replicas": [
+        {
+          "id": "0",          
+          "host": "127.0.0.1",
+          "port": "11000"
+        },
+        {
+          "id": "1",
+          "host": "127.0.0.1",
+          "port": "11001"
+        },
+        {
+         "id": "2",
+         "host": "127.0.0.1",
+         "port": "11002"
+        },
+        {
+         "id": "3",
+         "host": "127.0.0.1",
+         "port": "11003"
+        }
+    ]
+```
+Then, launch four servers in four terminals:
+```bash
+    # In the first terminal:
+    ./server 0
 
+    # In the second terminal:
+    ./server 1
+
+    # In the third terminal:
+    ./server 2
+
+    # In the fourth terminal:
+    ./server 3
+```
+
+The expected output of each server should be:
+```
+13:24:58 **Starting replica 0
+13:24:58 the local database has started
+homepath %s /home/ubuntu/Koala-NDSS-AE
+homepath %s /home/ubuntu/Koala-NDSS-AE
+13:24:58 Use ECDSA for authentication
+13:24:58 sleeptimer value 50
+13:24:58 running HotStuff
+13:24:58 Starting sender 0
+homepath %s /home/ubuntu/Koala-NDSS-AE
+13:24:58 starting connection manager
+13:24:58 ready to listen to port :11000
+```
+
+Once all servers are listening on their respective ports, launch a client:
+```bash
+    ./client 100 0 1
+```
+
+The expected output of the client should be:
+```
+2025/08/26 13:31:21 Rtype 0
+2025/08/26 13:31:21 Starting client test
+2025/08/26 13:31:21 ** Client 100
+homepath %s /home/ubuntu/Koala-NDSS-AE
+2025/08/26 13:31:21 Client 100 started.
+homepath %s /home/ubuntu/Koala-NDSS-AE
+2025/08/26 13:31:21 Use ECDSA for authentication
+2025/08/26 13:31:21 starting connection manager
+2025/08/26 13:31:21 len of request:  54
+2025/08/26 13:31:21 Got a reply rep
+2025/08/26 13:31:21 Got a reply rep
+2025/08/26 13:31:21 Got a reply rep
+2025/08/26 13:31:21 Got a reply rep
+2025/08/26 13:31:21 Done with all client requests.
+```
+
+If you use the provided `etc/conf.json` directly, the expected output of each server should be:
+```
+13:31:22 [!!!] Ready to output a value for height 1
+13:31:22 [!!!] Ready to output a value for height 2
+13:31:22 [!!!] Ready to output a value for height 3
+13:31:22 [!!!] Ready to output a value for height 4
+13:31:22 [!!!] Ready to output a value for height 5
+13:31:22 [!!!] Ready to output a value for height 6
+13:31:22 [!!!] Ready to output a value for height 7
+13:31:22 [!!!] Ready to output a value for height 8
+13:31:22 [!!!] Ready to output a value for height 9
+13:31:22 [!!!] Ready to output a value for height 10
+```
+
+If the server is the leader, the expected output should be:
+```
+13:31:21 batchSize: 1
+13:31:21 proposing block with height 1, awaiting 1 blocks
+13:31:22 batchSize: 0
+13:31:22 proposing block with height 2, awaiting 2 blocks
+13:31:22 batchSize: 0
+13:31:22 proposing block with height 3, awaiting 3 blocks
+13:31:22 batchSize: 0
+13:31:22 proposing block with height 4, awaiting 4 blocks
+13:31:22 batchSize: 0
+13:31:22 proposing block with height 5, awaiting 5 blocks
+13:31:22 batchSize: 0
+13:31:22 proposing block with height 6, awaiting 6 blocks
+13:31:22 batchSize: 0
+13:31:22 proposing block with height 7, awaiting 7 blocks
+13:31:22 batchSize: 0
+13:31:22 proposing block with height 8, awaiting 8 blocks
+13:31:22 batchSize: 0
+13:31:22 proposing block with height 9, awaiting 9 blocks
+13:31:22 batchSize: 0
+13:31:22 proposing block with height 10, awaiting 10 blocks
+```
+
+Finally, kill all servers and the client with the following commands:
+```bash
+    killall server
+    killall client
+```
 
 ## Evaluation
 
