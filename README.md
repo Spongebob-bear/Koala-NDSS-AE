@@ -47,7 +47,7 @@ This project requires Go version `1.19.4` or a higher version.
         ```bash
         wget https://go.dev/dl/go1.19.4.linux-amd64.tar.gz
         ```
-    *   **Aliyun Mirror (for users in China):**
+    *   **Aliyun Mirror (for users in Mainland China):**
         ```bash
         wget https://mirrors.aliyun.com/golang/go1.19.4.linux-amd64.tar.gz
         ```
@@ -70,7 +70,7 @@ This project requires Go version `1.19.4` or a higher version.
     tar -C ~ -xzf go1.19.4.linux-amd64.tar.gz
     ```
 
-4.  **Add Go to your PATH in ~/.bashrc.**
+4.  **Add Go to your PATH.**
     This is a **critical step** so that your terminal can find the `go` command.
 
     ```bash
