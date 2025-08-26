@@ -10,7 +10,7 @@ set -e
 
 # Enable Go Modules.
 # This ensures the build process uses the go.mod file for dependency management.
-/usr/local/go/bin/go env -w GO111MODULE=on
+go env -w GO111MODULE=on
 
 echo "Starting build process using vendored dependencies ..."
 
@@ -18,14 +18,14 @@ echo "Starting build process using vendored dependencies ..."
 # This forces the Go compiler to use the local 'vendor' directory
 # and prevents any network access for dependencies.
 
-/usr/local/go/bin/go build -mod=vendor -o ./ecdsagen ./src/main/ecdsagen
+go build -mod=vendor -o ./ecdsagen ./src/main/ecdsagen
 chmod +x ./ecdsagen
 ./ecdsagen 0 100
 
-/usr/local/go/bin/go build -mod=vendor -o ./server ./src/main/server
+go build -mod=vendor -o ./server ./src/main/server
 chmod +x ./server
 
-/usr/local/go/bin/go build -mod=vendor -o ./client ./src/main/client
+go build -mod=vendor -o ./client ./src/main/client
 chmod +x ./client
 
 echo "Build finished successfully!"
